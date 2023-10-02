@@ -16,6 +16,7 @@ table 50230 "Loan Table"
         field(3; "Loan Ammount"; Decimal)
         {
             DataClassification = ToBeClassified;
+
         }
         field(4; "Loan Start Date"; Date)
         {
@@ -24,6 +25,7 @@ table 50230 "Loan Table"
         field(5; "Loan End Date"; Date)
         {
             DataClassification = ToBeClassified;
+
         }
         field(6; "Bank Account"; Code[20])
         {
@@ -46,6 +48,7 @@ table 50230 "Loan Table"
         field(9; "Posted"; Boolean)
         {
             DataClassification = ToBeClassified;
+            Editable = false;
         }
 
     }

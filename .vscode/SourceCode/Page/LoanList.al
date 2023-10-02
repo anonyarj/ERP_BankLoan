@@ -51,6 +51,7 @@ page 50231 "Loan List"
                 {
                     ApplicationArea = All;
 
+
                 }
                 field(Posted; Rec.Posted)
                 {

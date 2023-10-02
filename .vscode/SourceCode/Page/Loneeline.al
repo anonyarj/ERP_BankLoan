@@ -12,6 +12,7 @@ page 50232 LoanLine
             {
                 field("Loan No."; Rec."Loan No.")
                 {
+
                     ApplicationArea = All;
 
                 }
@@ -24,10 +25,20 @@ page 50232 LoanLine
                 {
                     ApplicationArea = All;
 
+
                 }
                 field("Payment Amount"; Rec."Payment Amount")
                 {
                     ApplicationArea = All;
+                    trigger OnValidate()
+                    var
+                        myInt: Integer;
+                        PaymentRecord: Record "Loan Table";
+                    begin
+                        PaymentRecord.Get(Rec."Loan No.");
+
+
+                    end;
 
                 }
             }
