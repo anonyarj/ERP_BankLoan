@@ -1,8 +1,9 @@
-page 50232 LoanLine
+page 50236 "Posted Loan Line"
 {
     PageType = ListPart;
-    SourceTable = LoanLine;
+    SourceTable = "Posted Loan Line";
     AutoSplitKey = true;
+    Editable = false;
 
     layout
     {

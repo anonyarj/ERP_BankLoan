@@ -1,4 +1,4 @@
-table 50230 "Loan Table"
+table 50233 "Posted Loan Table"
 {
     DataClassification = ToBeClassified;
 
@@ -95,7 +95,7 @@ table 50230 "Loan Table"
     var
         myInt: Integer;
     begin
-        // TestField(Description);
+        TestField(Description);
     end;
 
     trigger OnDelete()

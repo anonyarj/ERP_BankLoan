@@ -1,7 +1,8 @@
-page 50230 "Loan Card"
+page 50235 "Posted Loan Card"
 {
     PageType = Card;
-    SourceTable = "Loan Table";
+    SourceTable = "Posted Loan Table";
+    Editable = false;
 
 
     layout
@@ -81,7 +82,7 @@ page 50230 "Loan Card"
 
 
             }
-            part(Lines; LoanLine)
+            part(Lines; "Posted Loan Line")
             {
                 Editable = not Rec.Posted;
                 ApplicationArea = All;
@@ -94,46 +95,26 @@ page 50230 "Loan Card"
     {
         area(Processing)
         {
-            // action("Clear Loan")
-            // {
-            //     ApplicationArea = All;
-
-            //     trigger OnAction()
-            //     begin
-            //         if Rec."Loan Ammount" <= Rec."Paid Amount" then begin
-            //             rec.Posted := true;
-            //             Message('The Loan is Completely paid');
-            //             CurrPage.Update();
-            //         end
-            //         else begin
-            //             Error('The Loan is not paid');
-            //         end;
-
-
-            //     end;
-            // }
-            action("Post Loan")
+            action("Clear Loan")
             {
                 ApplicationArea = All;
 
                 trigger OnAction()
-                var
-                    PostingMgmt: Codeunit "Posting Managements";
                 begin
-
-
-
-                    PostingMgmt.TransferLoanDetalis(Rec);
+                    if Rec."Loan Ammount" <= Rec."Paid Amount" then begin
+                        rec.Posted := true;
+                        Message('The Loan is Completely paid');
+                        CurrPage.Update();
+                    end
+                    else begin
+                        Error('The Loan is not paid');
+                    end;
 
 
                 end;
-
             }
         }
-
-
     }
-
 
     var
         myInt: Integer;

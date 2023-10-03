@@ -1,11 +1,14 @@
-page 50231 "Loan List"
+page 50233 "Posted Loan List"
 {
     PageType = List;
+    InsertAllowed = false;
+    ModifyAllowed = false;
     ApplicationArea = All;
     UsageCategory = Lists;
-    SourceTable = "Loan Table";
-    CardPageId = "Loan Card";
-    // SourceTableView = where(Posted = const(false));
+    SourceTable = "Posted Loan Table";
+    CardPageId = "Posted Loan card";
+    //SourceTableView = where(Posted = const(true));
+    Editable = false;
 
     layout
     {
@@ -21,6 +24,8 @@ page 50231 "Loan List"
                 field(Description; Rec.Description)
                 {
                     ApplicationArea = All;
+                    ShowMandatory = true;
+
 
                 }
                 field("Loan Ammount"; Rec."Loan Ammount")
