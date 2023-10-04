@@ -10,6 +10,7 @@ codeunit 50230 "Posting Managements"
         PostedLoanHeader: Record "Posted Loan Table";
         PostedLoanLine: Record "Posted Loan Line";
         ConfirmMassage: Label 'Do you want to Post it?';
+        LL: Record LoanLine;
     begin
         if Confirm(ConfirmMassage, true) then begin
 
@@ -39,7 +40,7 @@ codeunit 50230 "Posting Managements"
 
     end;
 
-    var
-        LL: Record LoanLine;
+
+
 
 }

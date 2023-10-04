@@ -73,13 +73,21 @@ page 50231 "Loan List"
     {
         area(Processing)
         {
-            action(ActionName)
+            action("Retrive LoanNo")
             {
                 ApplicationArea = All;
 
                 trigger OnAction();
+                var
+                    Loan: Record "Loan Table";
                 begin
-
+                    Loan.Reset();
+                    Loan.SetFilter("Loan Ammount", '>%1', 20000);
+                    Loan.SetFilter("Loan Start Date", '<>%1', 0D);
+                    If Loan.FindFirst() then
+                        repeat
+                            Message(Loan."Loan No");
+                        until Loan.Next() = 0;
                 end;
             }
         }
