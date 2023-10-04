@@ -5,6 +5,8 @@ codeunit 50230 "Posting Managements"
 
     end;
 
+
+
     procedure TransferLoanDetalis(Rec: Record "Loan Table")
     var
         PostedLoanHeader: Record "Posted Loan Table";
@@ -41,6 +43,32 @@ codeunit 50230 "Posting Managements"
     end;
 
 
+    [EventSubscriber(ObjectType::Table, Database::"Sales Header", 'OnAfterValidateEvent', 'Sell-to Customer Name', false, false)]
+    local procedure OnAfterValidateEvent_SelltoCustomerName(var Rec: Record "Sales Header"; var xRec: Record "Sales Header"; CurrFieldNo: Integer)
+    var
+        Customer: Record Customer;
+    begin
+        Customer.Reset();
+        Customer.SetRange("No.", rec."Sell-to Customer No.");
+        if Customer.FindFirst() then begin
+            rec."External Document Id" := Customer."External Document Id";
+            rec.Modify();
+        end;
+    end;
+
+
+    // [EventSubscriber(ObjectType::Table, Database::"Sales Header", 'OnBeforeValidateSellToCustomerName', '', false, false)]
+    // local procedure OnBeforeValidateSellToCustomerName(var Customer: Record Customer; var IsHandled: Boolean; var SalesHeader: Record "Sales Header")
+    // begin
+    //     SalesHeader."External Document Id" := Customer."External Document Id";
+    //     SalesHeader.Modify();
+    // end;
+
+    [EventSubscriber(ObjectType::Table, Database::"Transfer Receipt Header", 'OnSomeEvent', 'ElementName', false, false)]
+    local procedure MyProcedure()
+    begin
+
+    end;
 
 
 }

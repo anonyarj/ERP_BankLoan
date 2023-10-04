@@ -2,7 +2,13 @@ pageextension 50232 "Ext Customer List" extends "Customer List"
 {
     layout
     {
-
+        addafter(Name)
+        {
+            field("External Document Id"; Rec."External Document Id")
+            {
+                ApplicationArea = All;
+            }
+        }
         // Add changes to page layout here
     }
 
@@ -19,6 +25,7 @@ pageextension 50232 "Ext Customer List" extends "Customer List"
                 begin
                     rec.SetFilter("Location Code", 'GELB', '');
                     rec.SetFilter("Balance (LCY)", '>2000');
+                    Page.RunModal(Page::"GS Customer", Rec)
 
 
                 end;
