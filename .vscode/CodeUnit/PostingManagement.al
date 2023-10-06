@@ -64,9 +64,18 @@ codeunit 50230 "Posting Managements"
     //     SalesHeader.Modify();
     // end;
 
-    [EventSubscriber(ObjectType::Table, Database::"Transfer Receipt Header", 'OnSomeEvent', 'ElementName', false, false)]
-    local procedure MyProcedure()
+    [EventSubscriber(ObjectType::Table, Database::"Transfer Receipt Header", 'OnAfterCopyFromTransferHeader', '', false, false)]
+    local procedure Onaftercopyfromtransferheader(var TransferReceiptHeader: Record "Transfer Receipt Header"; TransferHeader: Record "Transfer Header")
     begin
+
+        TransferReceiptHeader."Transfer ID" := TransferHeader."Transfer ID";
+
+    end;
+
+    [EventSubscriber(ObjectType::Table, Database::"Sales Line", 'OnBeforeCopyFromItem', '', false, false)]
+    local procedure MyProcedure(Item: Record Item; var IsHandled: Boolean; var SalesLine: Record "Sales Line")
+    begin
+        SalesLine."Partner ID" := Item."Vendor Item No.";
 
     end;
 

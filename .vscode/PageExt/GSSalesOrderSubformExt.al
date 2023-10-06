@@ -1,16 +1,18 @@
-pageextension 50235 "GS Posted Transfer Receipt" extends "Posted Transfer Receipt"
+pageextension 50236 "GS Sales Order Subform Ext" extends "Sales Order Subform"
 {
+
     layout
     {
-        addafter("Posting Date")
+        addafter("Location Code")
         {
-            field("Transfer ID"; Rec."Transfer ID")
+            field("Partner ID"; Rec."Partner ID")
             {
                 ApplicationArea = All;
-                Editable = false;
+
             }
 
         }
+
     }
 
     actions

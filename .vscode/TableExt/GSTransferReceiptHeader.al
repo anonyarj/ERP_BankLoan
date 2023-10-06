@@ -8,5 +8,5 @@ tableextension 50235 "GS Transfer Header" extends "Transfer Receipt Header"
         }
     }
 
-    
+
 }
